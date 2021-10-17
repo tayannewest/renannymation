@@ -33,6 +33,10 @@ main {
   text-align: center;
 }
 
+#game-img {
+  height: 400px;
+  width: 400px;
+}
 
 div {
   display: flex;

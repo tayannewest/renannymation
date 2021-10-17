@@ -52,6 +52,7 @@
 /*----------------- Constants -----------------*/
 
 const gameplayIcons = document.querySelectorAll('.img')
+const bgImg = document.querySelector('#game-img')
 
 /*------------- Variables (state) -------------*/
 
@@ -64,10 +65,17 @@ const gameplayIcons = document.querySelectorAll('.img')
 /*-------------- Event Listeners --------------*/
 
 gameplayIcons.forEach(img => img.addEventListener('click', select))
+bgImg.addEventListener('click', switchImg)
 
 /*----------------- Functions -----------------*/
 
 
 function select(evt) {
   console.log(evt.target.id)
+}
+
+function switchImg (evt) {
+  document.querySelector('#game-img').src = 'https://picsum.photos/400/400'
+  bgImg.className = 'animate__animated animate__fadeOut'
+  bgImg.className = 'animate__animated animate__fadeIn'
 }
