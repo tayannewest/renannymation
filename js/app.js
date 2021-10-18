@@ -57,10 +57,10 @@
 let timeLeft = 180
 let min, sec = 0
 let points = 0
+let gamePrompts = ['Can I please have a snack?', 'Hungry....', 'Will you read to me?', 'Bored...', 'Can I have a hug?', 'Do you wanna be friends?']
 
 /*--------- Cached Element References ---------*/
 
-// const gameplayIcons = document.querySelectorAll('.img')
 const bgImg = document.querySelector('#game-img')
 const startBtn = document.querySelector('#start-btn')
 const timerEl = document.querySelector('#time')
@@ -72,7 +72,6 @@ const heart = document.querySelector('#heart')
 
 /*-------------- Event Listeners --------------*/
 
-// gameplayIcons.forEach(img => img.addEventListener('click', select))
 bgImg.addEventListener('click', switchImg)
 startBtn.addEventListener('click', start)
 food.addEventListener('click', select)
@@ -110,8 +109,13 @@ function start() {
   } console.log('click')
   timerEl.removeAttribute('hidden')
   render()
+  userPrompt()
 }
 
+function userPrompt() {
+  let randomPrompt = gamePrompts[Math.floor(Math.random() * gamePrompts.length)]
+  console.log(randomPrompt)
+}
 
 function render(){
   let timerId = setInterval(() => {

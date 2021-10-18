@@ -33,12 +33,11 @@ main {
   text-align: center;
 }
 
-.progress {
+/* .progress {
   width: 75%;
   border: 1px solid white;
   margin: auto;
-  
-}
+} */
 
 #game-img {
   height: 400px;
