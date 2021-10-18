@@ -53,9 +53,10 @@
 
 const gameplayIcons = document.querySelectorAll('.img')
 const bgImg = document.querySelector('#game-img')
+const startBtn = document.querySelector('#start-btn')
+const timerEl = document.querySelector('#time')
 
 /*------------- Variables (state) -------------*/
-
 
 
 /*--------- Cached Element References ---------*/
@@ -66,6 +67,7 @@ const bgImg = document.querySelector('#game-img')
 
 gameplayIcons.forEach(img => img.addEventListener('click', select))
 bgImg.addEventListener('click', switchImg)
+startBtn.addEventListener('click', start)
 
 /*----------------- Functions -----------------*/
 
@@ -78,4 +80,33 @@ function switchImg (evt) {
   document.querySelector('#game-img').src = 'https://picsum.photos/400/400'
   bgImg.className = 'animate__animated animate__fadeOut'
   bgImg.className = 'animate__animated animate__fadeIn'
+}
+
+function start() {
+  if (startBtn.style.display === 'none') {
+    startBtn.style.display = 'flex'
+  } else {
+    startBtn.style.display = 'none'
+  } console.log('click')
+  timerEl.removeAttribute('hidden')
+  let threeMinutes = 60 * 3,
+  display = document.querySelector('#time');
+startTimer(threeMinutes, display);
+}
+
+function startTimer(duration, display) {
+    var timer = duration, minutes, seconds;
+    setInterval(function () {
+        minutes = parseInt(timer / 60, 10);
+        seconds = parseInt(timer % 60, 10);
+
+        minutes = minutes < 10 ? "0" + minutes : minutes;
+        seconds = seconds < 10 ? "0" + seconds : seconds;
+
+        display.textContent = minutes + ":" + seconds;
+
+        if (--timer < 0) {
+            timer = duration;
+        }
+    }, 1000);
 }
