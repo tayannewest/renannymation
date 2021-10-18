@@ -56,30 +56,39 @@
 
 let timeLeft = 180
 let min, sec = 0
-let points = 50
+let points = 0
 
 /*--------- Cached Element References ---------*/
 
-const gameplayIcons = document.querySelectorAll('.img')
+// const gameplayIcons = document.querySelectorAll('.img')
 const bgImg = document.querySelector('#game-img')
 const startBtn = document.querySelector('#start-btn')
 const timerEl = document.querySelector('#time')
+const scoreBar = document.querySelector('#score-bar')
+const food = document.querySelector('#food')
+const book = document.querySelector('#book')
+const heart = document.querySelector('#heart')
 
 
 /*-------------- Event Listeners --------------*/
 
-gameplayIcons.forEach(img => img.addEventListener('click', select))
+// gameplayIcons.forEach(img => img.addEventListener('click', select))
 bgImg.addEventListener('click', switchImg)
 startBtn.addEventListener('click', start)
+food.addEventListener('click', select)
+book.addEventListener('click', select)
+heart.addEventListener('click', select)
 
 /*----------------- Functions -----------------*/
 
 
 function select(evt) {
-  console.log(evt.target.id)
+  evt.target.id
+  points += 5
+  console.log(evt.target.id, points)
 }
 
-function switchImg (evt) {
+function switchImg () {
   document.querySelector('#game-img').src = 'https://picsum.photos/400/400'
   bgImg.className = 'animate__animated animate__fadeOut'
   bgImg.className = 'animate__animated animate__fadeIn'
@@ -88,9 +97,9 @@ function switchImg (evt) {
 }
 
 function showIcons() {
-  document.querySelector('#food').removeAttribute('hidden')
-  document.querySelector('#book').removeAttribute('hidden')
-  document.querySelector('#heart').removeAttribute('hidden')
+  food.removeAttribute('hidden')
+  book.removeAttribute('hidden')
+  heart.removeAttribute('hidden')
 }
 
 function start() {
@@ -101,8 +110,8 @@ function start() {
   } console.log('click')
   timerEl.removeAttribute('hidden')
   render()
-  
 }
+
 
 function render(){
   let timerId = setInterval(() => {
@@ -121,3 +130,6 @@ function render(){
     }
   }, 1000)
 }
+
+// scoreBar.removeAttribute('hidden')
+// scoreBar.style = `${points}%`
