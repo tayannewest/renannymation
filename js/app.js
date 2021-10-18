@@ -55,13 +55,15 @@
 /*------------- Variables (state) -------------*/
 
 let timeLeft = 180
-let clickTime = 3
 let min, sec = 0
 let points = 0
+let counter = 0
+let clickTime = 3
 let gamePrompts = ['Can I please have a snack?', 'Hungry....', 'Will you read to me?', 'Bored...', 'Can I have a hug?', 'Do you wanna be friends?']
 
 /*--------- Cached Element References ---------*/
 
+const gamePlayIcons = document.querySelector('.img')
 const bgImg = document.querySelector('#game-img')
 const startBtn = document.querySelector('#start-btn')
 const timerEl = document.querySelector('#time')
@@ -83,13 +85,6 @@ heart.addEventListener('click', select)
 /*----------------- Functions -----------------*/
 
 
-function select(evt) {
-  evt.target.id
-  points += 5
-  console.log(evt.target.id, points)
-  userPrompt()
-}
-
 function switchImg () {
   document.querySelector('#game-img').src = 'https://picsum.photos/400/400'
   bgImg.className = 'animate__animated animate__fadeOut'
@@ -104,6 +99,13 @@ function showIcons() {
   heart.removeAttribute('hidden')
 }
 
+function select(evt) {
+  evt.target.id
+  points += 5
+  console.log(evt.target.id, points)
+  // userPrompt()
+}
+
 function start() {
   if (startBtn.style.display === 'none') {
     startBtn.style.display = 'flex'
@@ -112,10 +114,15 @@ function start() {
   } console.log('click')
   timerEl.removeAttribute('hidden')
   render()
-  userPrompt()
+  generatePrompts()
 }
 
 
+let gamePrompt
+
+function generatePrompts() {
+  gamePrompt = setInterval(userPrompt, 2000)
+}
 
 function userPrompt() {
   let randomPrompt = gamePrompts[Math.floor(Math.random() * gamePrompts.length)]
