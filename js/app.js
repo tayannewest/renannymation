@@ -55,6 +55,7 @@
 /*------------- Variables (state) -------------*/
 
 let timeLeft = 180
+let clickTime = 3
 let min, sec = 0
 let points = 0
 let gamePrompts = ['Can I please have a snack?', 'Hungry....', 'Will you read to me?', 'Bored...', 'Can I have a hug?', 'Do you wanna be friends?']
@@ -68,6 +69,7 @@ const scoreBar = document.querySelector('#score-bar')
 const food = document.querySelector('#food')
 const book = document.querySelector('#book')
 const heart = document.querySelector('#heart')
+const adamSays = document.querySelector('#random-prompt')
 
 
 /*-------------- Event Listeners --------------*/
@@ -85,6 +87,7 @@ function select(evt) {
   evt.target.id
   points += 5
   console.log(evt.target.id, points)
+  userPrompt()
 }
 
 function switchImg () {
@@ -112,9 +115,11 @@ function start() {
   userPrompt()
 }
 
+
+
 function userPrompt() {
   let randomPrompt = gamePrompts[Math.floor(Math.random() * gamePrompts.length)]
-  console.log(randomPrompt)
+  adamSays.innerHTML = randomPrompt
 }
 
 function render(){
