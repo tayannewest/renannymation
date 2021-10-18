@@ -45,22 +45,25 @@
 // 			if clicked < 1 time, he runs away feeling unloved, congrats, you’ve unleashed a monster upon the town, fade to love lose condition and ask if you want to try again
 // 				(replay button)
 // 			If click is spammed and we hit more than 20 clicks in a minute, you can speed run the game and Adam feels validated and you win
-// If status bars have >= 15 points at end of 3 minutes
+// If status bars have >= 50 points at end of 3 minutes
 // 	You win! Display win condition alert
 
 
 /*----------------- Constants -----------------*/
 
+
+/*------------- Variables (state) -------------*/
+
+let timeLeft = 180
+let min, sec = 0
+let points = 50
+
+/*--------- Cached Element References ---------*/
+
 const gameplayIcons = document.querySelectorAll('.img')
 const bgImg = document.querySelector('#game-img')
 const startBtn = document.querySelector('#start-btn')
 const timerEl = document.querySelector('#time')
-
-/*------------- Variables (state) -------------*/
-
-
-/*--------- Cached Element References ---------*/
-
 
 
 /*-------------- Event Listeners --------------*/
@@ -80,6 +83,14 @@ function switchImg (evt) {
   document.querySelector('#game-img').src = 'https://picsum.photos/400/400'
   bgImg.className = 'animate__animated animate__fadeOut'
   bgImg.className = 'animate__animated animate__fadeIn'
+  startBtn.removeAttribute('hidden')
+  showIcons()
+}
+
+function showIcons() {
+  document.querySelector('#food').removeAttribute('hidden')
+  document.querySelector('#book').removeAttribute('hidden')
+  document.querySelector('#heart').removeAttribute('hidden')
 }
 
 function start() {
@@ -89,24 +100,24 @@ function start() {
     startBtn.style.display = 'none'
   } console.log('click')
   timerEl.removeAttribute('hidden')
-  let threeMinutes = 60 * 3,
-  display = document.querySelector('#time');
-startTimer(threeMinutes, display);
+  render()
+  
 }
 
-function startTimer(duration, display) {
-    var timer = duration, minutes, seconds;
-    setInterval(function () {
-        minutes = parseInt(timer / 60, 10);
-        seconds = parseInt(timer % 60, 10);
-
-        minutes = minutes < 10 ? "0" + minutes : minutes;
-        seconds = seconds < 10 ? "0" + seconds : seconds;
-
-        display.textContent = minutes + ":" + seconds;
-
-        if (--timer < 0) {
-            timer = duration;
-        }
-    }, 1000);
+function render(){
+  let timerId = setInterval(() => {
+    min = Math.floor(timeLeft/60)
+    sec = timeLeft % 60
+    timeLeft -= 1
+    console.log(timeLeft)
+    if (sec < 10) {
+      timerEl.textContent = `${min}:0${sec}`
+    } else {
+      timerEl.textContent = `${min}:${sec}`
+    }
+    if (timeLeft <= 0) {
+      timerEl.textContent = 'CONGRATION YOU DONE IT'
+      clearInterval(timerId)
+    }
+  }, 1000)
 }
