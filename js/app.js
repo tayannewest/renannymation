@@ -114,6 +114,7 @@ function start() {
   } console.log('click')
   timerEl.removeAttribute('hidden')
   instructions.removeAttribute('hidden')
+  currentScore.removeAttribute('hidden')
   render()
   generatePrompts()
   mood()
