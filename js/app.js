@@ -54,12 +54,11 @@
 
 /*------------- Variables (state) -------------*/
 
-let timeLeft = 180
+let timeLeft = 60
 let min, sec = 0
 let points = 0
 let lovePower = 0
 let counter = 0
-let clickTime = 3
 let gamePrompt
 let randomPrompt
 let gamePrompts = ['Can I please have a snack?', 'Hungry....', 'Will you read to me?', 'Bored...', 'Can I have a hug?', 'Do you wanna be friends?']
@@ -155,9 +154,16 @@ function render(){
     } else {
       timerEl.textContent = `${min}:${sec}`
     }
-    if (timeLeft <= 0) {
-      timerEl.textContent = 'CONGRATION YOU DONE IT'
+    if ((timeLeft <= 0) && (points >= 50)) {
       clearInterval(timerId)
+      timerEl.textContent = 'What a great job, looks like Adam will be able to fit in with the villagers thanks to your help!'
+      clearInterval(gamePrompt)
+      adamSays.innerHTML = 'That was so fun'
+    } else if ((timeLeft <= 0) && (points < 50)) {
+      clearInterval(timerId)
+      timerEl.textContent = 'Way to go, he ran away. Looks like he might not be the only monster here...'
+      clearInterval(gamePrompt)
+      adamSays.innerHTML = 'If I cannot inspire love, I will cause fear!'
     }
   }, 1000)
 }
