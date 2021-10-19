@@ -67,6 +67,7 @@ let gamePrompts = ['Can I please have a snack?', 'Hungry....', 'Will you read to
 
 const gamePlayIcons = document.querySelector('.img')
 const bgImg = document.querySelector('#game-img')
+const acceptBtn = document.querySelector('#accept')
 const startBtn = document.querySelector('#start-btn')
 const timerEl = document.querySelector('#time')
 const scoreBar = document.querySelector('#score-bar')
@@ -75,11 +76,12 @@ const book = document.querySelector('#book')
 const heart = document.querySelector('#heart')
 const adamSays = document.querySelector('#random-prompt')
 const currentScore = document.querySelector('#score')
+const instructions = document.querySelector('#instructions')
 
 
 /*-------------- Event Listeners --------------*/
 
-bgImg.addEventListener('click', switchImg)
+acceptBtn.addEventListener('click', switchImg)
 startBtn.addEventListener('click', start)
 food.addEventListener('click', rightChoice)
 book.addEventListener('click', rightChoice)
@@ -89,6 +91,7 @@ heart.addEventListener('click', rightChoice)
 
 
 function switchImg () {
+  acceptBtn.hidden = true
   document.querySelector('#game-img').src = 'https://picsum.photos/400/400'
   bgImg.className = 'animate__animated animate__fadeOut'
   bgImg.className = 'animate__animated animate__fadeIn'
@@ -102,12 +105,6 @@ function showIcons() {
   heart.removeAttribute('hidden')
 }
 
-// function select(evt) {
-//   evt.target.id
-//   // points += 5
-//   // console.log(evt.target.id, points)
-// }
-
 
 function start() {
   if (startBtn.style.display === 'none') {
@@ -116,8 +113,10 @@ function start() {
     startBtn.style.display = 'none'
   } console.log('click')
   timerEl.removeAttribute('hidden')
+  instructions.removeAttribute('hidden')
   render()
   generatePrompts()
+  mood()
 }
 
 function generatePrompts() {
@@ -141,10 +140,20 @@ function rightChoice(evt) {
   } else {
     points -= 5
   }
-  currentScore.innerHTML = `Current score: ${points}`
+
   console.log(evt.target.id, points)
 }
 
+function mood() {
+  if (points <=49) {
+    currentScore.innerHTML = 'unhappy...'
+  } else if ((points >= 50) && (points <= 99)) {
+    currentScore.innerHTML = 'feeling better...'
+  } else if (points >= 100) {
+    currentScore.innerHTML = 'Happy!'
+  }
+}
+console.log(mood())
 
 function render(){
   let timerId = setInterval(() => {
