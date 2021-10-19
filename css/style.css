@@ -2,17 +2,13 @@ html {
   box-sizing: border-box
 }
 
-/* The Universal Selector */
-*, /* All elements*/
-*::before, /* All ::before pseudo-elements */
-*::after { /* All ::after pseudo-elements */
-  /* height & width will now include border & padding by default
-     but can be over-ridden as needed */
+*, 
+*::before,
+*::after { 
+
   box-sizing: inherit;
 }
 
-/* resets font size to be 62.5% of the user preference - 
-   in most browser configurations this will be 10px */
 :root {
   font-size: 62.5%
 }
@@ -22,7 +18,6 @@ body {
   color: rgb(255, 214, 33);
   font-family: 'Press Start 2P', Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
   min-height: 100vh;
-  margin: 0;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -34,8 +29,8 @@ main {
 }
 
 #game-img {
-  height: 400px;
-  width: 400px;
+  height: 450px;
+  width: 450px;
   margin: 10px;
 }
 
