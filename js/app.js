@@ -158,7 +158,7 @@ function render(){
       clearInterval(timerId)
       timerEl.textContent = 'What a great job, looks like Adam will be able to fit in with the villagers thanks to your help!'
       clearInterval(gamePrompt)
-      adamSays.innerHTML = 'That was so fun'
+      adamSays.innerHTML = 'That was so fun, thanks for playing with me!'
     } else if ((timeLeft <= 0) && (points < 50)) {
       clearInterval(timerId)
       timerEl.textContent = 'Way to go, he ran away. Looks like he might not be the only monster here...'
@@ -167,6 +167,3 @@ function render(){
     }
   }, 1000)
 }
-
-// scoreBar.removeAttribute('hidden')
-// scoreBar.style = `${points}%`
