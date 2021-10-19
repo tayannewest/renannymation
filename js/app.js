@@ -74,6 +74,7 @@ const food = document.querySelector('#food')
 const book = document.querySelector('#book')
 const heart = document.querySelector('#heart')
 const adamSays = document.querySelector('#random-prompt')
+const currentScore = document.querySelector('#score')
 
 
 /*-------------- Event Listeners --------------*/
@@ -140,6 +141,7 @@ function rightChoice(evt) {
   } else {
     points -= 5
   }
+  currentScore.innerHTML = `Current score: ${points}`
   console.log(evt.target.id, points)
 }
 
@@ -154,12 +156,12 @@ function render(){
     } else {
       timerEl.textContent = `${min}:${sec}`
     }
-    if ((timeLeft <= 0) && (points >= 50)) {
+    if ((timeLeft <= 0) && (points >= 100)) {
       clearInterval(timerId)
       timerEl.textContent = 'What a great job, looks like Adam will be able to fit in with the villagers thanks to your help!'
       clearInterval(gamePrompt)
       adamSays.innerHTML = 'That was so fun, thanks for playing with me!'
-    } else if ((timeLeft <= 0) && (points < 50)) {
+    } else if ((timeLeft <= 0) && (points < 100)) {
       clearInterval(timerId)
       timerEl.textContent = 'Way to go, he ran away. Looks like he might not be the only monster here...'
       clearInterval(gamePrompt)
