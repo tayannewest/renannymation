@@ -57,8 +57,11 @@
 let timeLeft = 180
 let min, sec = 0
 let points = 0
+let lovePower = 0
 let counter = 0
 let clickTime = 3
+let gamePrompt
+let randomPrompt
 let gamePrompts = ['Can I please have a snack?', 'Hungry....', 'Will you read to me?', 'Bored...', 'Can I have a hug?', 'Do you wanna be friends?']
 
 /*--------- Cached Element References ---------*/
@@ -78,9 +81,9 @@ const adamSays = document.querySelector('#random-prompt')
 
 bgImg.addEventListener('click', switchImg)
 startBtn.addEventListener('click', start)
-food.addEventListener('click', select)
-book.addEventListener('click', select)
-heart.addEventListener('click', select)
+food.addEventListener('click', rightChoice)
+book.addEventListener('click', rightChoice)
+heart.addEventListener('click', rightChoice)
 
 /*----------------- Functions -----------------*/
 
@@ -99,12 +102,12 @@ function showIcons() {
   heart.removeAttribute('hidden')
 }
 
-function select(evt) {
-  evt.target.id
-  points += 5
-  console.log(evt.target.id, points)
-  // userPrompt()
-}
+// function select(evt) {
+//   evt.target.id
+//   // points += 5
+//   // console.log(evt.target.id, points)
+// }
+
 
 function start() {
   if (startBtn.style.display === 'none') {
@@ -117,24 +120,36 @@ function start() {
   generatePrompts()
 }
 
-
-let gamePrompt
-
 function generatePrompts() {
   gamePrompt = setInterval(userPrompt, 2000)
 }
 
 function userPrompt() {
-  let randomPrompt = gamePrompts[Math.floor(Math.random() * gamePrompts.length)]
+  randomPrompt = gamePrompts[Math.floor(Math.random() * gamePrompts.length)]
   adamSays.innerHTML = randomPrompt
 }
+
+function rightChoice(evt) {
+  if ((randomPrompt === gamePrompts[0] || randomPrompt === gamePrompts[1]) && evt.target.id === 'food') {
+    points += 5
+  } else if
+    ((randomPrompt === gamePrompts[2] || randomPrompt === gamePrompts[3]) && evt.target.id === 'book') {
+    points += 5
+  } else if 
+    ((randomPrompt === gamePrompts[4] || randomPrompt === gamePrompts[5]) && evt.target.id === 'heart') {
+    points += 5
+  } else {
+    points -= 5
+  }
+  console.log(evt.target.id, points)
+}
+
 
 function render(){
   let timerId = setInterval(() => {
     min = Math.floor(timeLeft/60)
     sec = timeLeft % 60
     timeLeft -= 1
-    console.log(timeLeft)
     if (sec < 10) {
       timerEl.textContent = `${min}:0${sec}`
     } else {
