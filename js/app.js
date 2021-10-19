@@ -79,6 +79,18 @@ function userPrompt() {
   adamSays.innerHTML = randomPrompt
 }
 
+function mood(){
+  if (points <=49) {
+    currentScore.innerHTML = 'unhappy...'
+  } else if ((points >= 50) && (points <= 99)) {
+    currentScore.innerHTML = 'feeling better...'
+    document.querySelector('#game-img').src = 'images/better.png'
+  } else if (points >= 100) {
+    currentScore.innerHTML = 'Happy!'
+    document.querySelector('#game-img').src = 'images/happy.png'
+  }
+}
+
 function rightChoice(evt) {
   if ((randomPrompt === gamePrompts[0] || randomPrompt === gamePrompts[1]) && evt.target.id === 'food') {
     points += 5
@@ -90,18 +102,8 @@ function rightChoice(evt) {
     points += 5
   } else {
     points -= 5
-  if (points <=49) {
-    currentScore.innerHTML = 'unhappy...'
-  } else if ((points >= 50) && (points <= 99)) {
-    currentScore.innerHTML = 'feeling better...'
-    document.querySelector('#game-img').src = 'images/better.png'
-  } else if (points >= 100) {
-    currentScore.innerHTML = 'Happy!'
-    document.querySelector('#game-img').src = 'images/happy.png'
   }
-  }
-
-  console.log(evt.target.id, points)
+  mood()
 }
 
 function render(){
