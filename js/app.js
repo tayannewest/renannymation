@@ -68,7 +68,6 @@ function start() {
   currentScore.removeAttribute('hidden')
   render()
   generatePrompts()
-  mood()
 }
 
 function generatePrompts() {
@@ -91,12 +90,6 @@ function rightChoice(evt) {
     points += 5
   } else {
     points -= 5
-  }
-
-  console.log(evt.target.id, points)
-}
-
-function mood() {
   if (points <=49) {
     currentScore.innerHTML = 'unhappy...'
   } else if ((points >= 50) && (points <= 99)) {
@@ -106,6 +99,9 @@ function mood() {
     currentScore.innerHTML = 'Happy!'
     document.querySelector('#game-img').src = 'images/happy.png'
   }
+  }
+
+  console.log(evt.target.id, points)
 }
 
 function render(){
@@ -123,11 +119,13 @@ function render(){
       timerEl.textContent = 'What a great job, looks like Adam will be able to fit in with the villagers thanks to your help!'
       clearInterval(gamePrompt)
       adamSays.innerHTML = 'That was so fun, thanks for playing with me!'
+      instructions.hidden = true
     } else if ((timeLeft <= 0) && (points < 100)) {
       clearInterval(timerId)
       timerEl.textContent = 'Way to go, he ran away. Looks like he might not be the only monster here...'
       clearInterval(gamePrompt)
       adamSays.innerHTML = 'If I cannot inspire love, I will cause fear!'
+      instructions.hidden = true
     }
   }, 1000)
 }
