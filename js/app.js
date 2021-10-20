@@ -28,6 +28,7 @@ const heart = document.querySelector('#heart')
 const adamSays = document.querySelector('#random-prompt')
 const currentScore = document.querySelector('#score')
 const instructions = document.querySelector('#instructions')
+const progressBar = document.querySelector('#points-progress')
 
 
 /*-------------- Event Listeners --------------*/
@@ -66,6 +67,7 @@ function start() {
   timerEl.removeAttribute('hidden')
   instructions.removeAttribute('hidden')
   currentScore.removeAttribute('hidden')
+  progressBar.style = `width: ${points}`
   render()
   generatePrompts()
 }
