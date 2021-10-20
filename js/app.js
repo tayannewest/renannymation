@@ -2,6 +2,7 @@
 
 /*----------------- Constants -----------------*/
 
+const bgTrack = new Audio('/audio/2019-08-25_-_8bit-Smooth_Presentation_-_David_Fesliyan.mp3')
 
 /*------------- Variables (state) -------------*/
 
@@ -39,7 +40,7 @@ const reset = document.querySelector('#reset-btn')
 /*-------------- Event Listeners --------------*/
 
 acceptBtn.addEventListener('click', showImg)
-startBtn.addEventListener('click', start)
+startBtn.addEventListener('click', init)
 food.addEventListener('click', rightChoice)
 book.addEventListener('click', rightChoice)
 heart.addEventListener('click', rightChoice)
@@ -63,8 +64,7 @@ function showIcons() {
   heart.removeAttribute('hidden')
 }
 
-
-function start() {
+function init() {
   if (startBtn.style.display === 'none') {
     startBtn.style.display = 'flex'
   } else {
@@ -73,8 +73,11 @@ function start() {
   timerEl.removeAttribute('hidden')
   instructions.removeAttribute('hidden')
   currentScore.removeAttribute('hidden')
+  points = 0
+  timeLeft = 60
   render()
   generatePrompts()
+  bgTrack.play()
 }
 
 function generatePrompts() {
@@ -98,7 +101,6 @@ function mood(){
   }
 }
 
-
 function rightChoice(evt) {
   if ((randomPrompt === gamePrompts[0] || randomPrompt === gamePrompts[1]) && evt.target.id === 'food') {
     points += 5
@@ -116,7 +118,6 @@ function rightChoice(evt) {
 }
 
 function render(){
-  points = 0
   let timerId = setInterval(() => {
     min = Math.floor(timeLeft/60)
     sec = timeLeft % 60
@@ -134,6 +135,7 @@ function render(){
       instructions.hidden = true
       currentScore.hidden = true
       reset.hidden = false
+      bgTrack.pause()
     } else if ((timeLeft <= -1) && (points < 100)) {
       clearInterval(timerId)
       timerEl.textContent = 'Way to go, he ran away. Looks like he might not be the only monster here...'
@@ -142,11 +144,11 @@ function render(){
       instructions.hidden = true
       currentScore.hidden = true
       reset.hidden = false
+      bgTrack.pause()
     }
   }, 1000)
   rightChoice()
 }
-
 
 function toggleLightDark() {
   body.className = body.className === 'light' ? '' : 'light'
