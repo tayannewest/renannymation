@@ -17,6 +17,7 @@ let gamePrompts = ["Can I please have a snack?", "I'm hungry....", "Will you rea
 /*--------- Cached Element References ---------*/
 
 const gamePlayIcons = document.querySelector('.img')
+const text = document.querySelector('#intro-text')
 const bgImg = document.querySelector('#game-img')
 const acceptBtn = document.querySelector('#accept')
 const startBtn = document.querySelector('#start-btn')
@@ -28,26 +29,29 @@ const heart = document.querySelector('#heart')
 const adamSays = document.querySelector('#random-prompt')
 const currentScore = document.querySelector('#mood')
 const instructions = document.querySelector('#instructions')
-const bar = document.querySelector(".progress-bar");
+const bar = document.querySelector('.progress-bar');
+const lightDarkBtn = document.querySelector('#light-dark-btn')
+const body = document.querySelector('body')
 
 
 
 /*-------------- Event Listeners --------------*/
 
-acceptBtn.addEventListener('click', switchImg)
+acceptBtn.addEventListener('click', showImg)
 startBtn.addEventListener('click', start)
 food.addEventListener('click', rightChoice)
 book.addEventListener('click', rightChoice)
 heart.addEventListener('click', rightChoice)
+lightDarkBtn.addEventListener('click', toggleLightDark)
 
 /*----------------- Functions -----------------*/
 
 
-function switchImg () {
+function showImg () {
+  text.hidden = true
   acceptBtn.hidden = true
-  document.querySelector('#game-img').src = 'images/sad.png'
-  bgImg.className = 'animate__animated animate__fadeOut'
   bgImg.className = 'animate__animated animate__fadeIn'
+  bgImg.removeAttribute('hidden')
   startBtn.removeAttribute('hidden')
   showIcons()
 }
@@ -94,16 +98,14 @@ function mood(){
 }
 
 
-
-
 function rightChoice(evt) {
   if ((randomPrompt === gamePrompts[0] || randomPrompt === gamePrompts[1]) && evt.target.id === 'food') {
     points += 5
   } else if
-    ((randomPrompt === gamePrompts[2] || randomPrompt === gamePrompts[3]) && evt.target.id === 'book') {
+  ((randomPrompt === gamePrompts[2] || randomPrompt === gamePrompts[3]) && evt.target.id === 'book') {
     points += 5
   } else if 
-    ((randomPrompt === gamePrompts[4] || randomPrompt === gamePrompts[5]) && evt.target.id === 'heart') {
+  ((randomPrompt === gamePrompts[4] || randomPrompt === gamePrompts[5]) && evt.target.id === 'heart') {
     points += 5
   } else {
     points -= 5
@@ -138,3 +140,15 @@ function render(){
   }, 1000)
   rightChoice()
 }
+
+function toggleLightDark() {
+  body.className = body.className === 'light' ? '' : 'light'
+}
+
+function checkDarkPref() {
+  if (window.matchMedia('(prefers-color-scheme:dark)').matches && body.className !== 'dark') {
+    toggleLightDark()
+  }
+}
+
+checkDarkPref()

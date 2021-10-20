@@ -18,13 +18,22 @@
 </head>
 <body>
   <main>
+    <button id="light-dark-btn" class="btn"></button>
   <h1>ReNannyMation</h1>
-  <h2>It's alive! Now let's try and keep it that way....</h2>
-  <button id="start-btn" hidden>Let's start!</button>
-  <div>
-    <img id="game-img" src="images/cover-image.png" alt="">
+  <button id="start-btn" class="btn" hidden>Let's start!</button>
+  <div id="intro-text">
+    <h2>Thanks for coming by on such short notice!</h2>
+    <p>I have to run out, it'll just be for a minute, tops. You can watch him for a minute, right? I know he's an unusual kid, but he's really not difficult.</p>
+    <p>If he's hungry, click on the food to give him a snack.</p>
+    <p>If he's bored, click on the book to read to him.</p>
+    <p>And if he's feeling lonely, just give him some love by clicking the heart.</p>
+    <p>Doing this will make him happy, and you <strong>must</strong> make sure he's feeling happy by the time I get back!</p>
+    <p>It's really not so different from regular babysitting. Are you up for it?</p>
   </div>
-  <button id="accept">I'll do it!</button>
+  <div>
+    <img id="game-img" src="images/sad.png" alt="baby frankenstein's monster" hidden>
+  </div>
+  <button id="accept" class="btn">I'll do it!</button>
   <div>
     <h1 id="random-prompt"></h1>
   </div>
