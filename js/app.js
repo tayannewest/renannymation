@@ -32,6 +32,7 @@ const instructions = document.querySelector('#instructions')
 const bar = document.querySelector('.progress-bar');
 const lightDarkBtn = document.querySelector('#light-dark-btn')
 const body = document.querySelector('body')
+const reset = document.querySelector('#reset-btn')
 
 
 
@@ -93,7 +94,7 @@ function mood(){
     document.querySelector('#game-img').src = 'images/better.png'
   } else if (points >= 100) {
     currentScore.innerHTML = 'Happy!'
-    document.querySelector('#game-img').src = 'images/happy.png'
+    document.querySelector('#game-img').src = 'images/happy-adam-gif.gif'
   }
 }
 
@@ -115,6 +116,7 @@ function rightChoice(evt) {
 }
 
 function render(){
+  points = 0
   let timerId = setInterval(() => {
     min = Math.floor(timeLeft/60)
     sec = timeLeft % 60
@@ -130,16 +132,21 @@ function render(){
       clearInterval(gamePrompt)
       adamSays.innerHTML = 'That was so fun, thanks for playing with me!'
       instructions.hidden = true
+      currentScore.hidden = true
+      reset.hidden = false
     } else if ((timeLeft <= -1) && (points < 100)) {
       clearInterval(timerId)
       timerEl.textContent = 'Way to go, he ran away. Looks like he might not be the only monster here...'
       clearInterval(gamePrompt)
       adamSays.innerHTML = 'If I cannot inspire love, I will cause fear!'
       instructions.hidden = true
+      currentScore.hidden = true
+      reset.hidden = false
     }
   }, 1000)
   rightChoice()
 }
+
 
 function toggleLightDark() {
   body.className = body.className === 'light' ? '' : 'light'
