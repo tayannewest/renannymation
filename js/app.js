@@ -3,6 +3,7 @@
 /*----------------- Constants -----------------*/
 
 const bgTrack = new Audio('/audio/2019-08-25_-_8bit-Smooth_Presentation_-_David_Fesliyan.mp3')
+const clickSound = new Audio('/audio/mixkit-player-jumping-in-a-video-game-2043.wav')
 
 /*------------- Variables (state) -------------*/
 
@@ -56,6 +57,7 @@ function showImg () {
   bgImg.removeAttribute('hidden')
   startBtn.removeAttribute('hidden')
   showIcons()
+  bgTrack.play()
 }
 
 function showIcons() {
@@ -77,7 +79,6 @@ function init() {
   timeLeft = 60
   render()
   generatePrompts()
-  bgTrack.play()
 }
 
 function generatePrompts() {
@@ -104,14 +105,18 @@ function mood(){
 function rightChoice(evt) {
   if ((randomPrompt === gamePrompts[0] || randomPrompt === gamePrompts[1]) && evt.target.id === 'food') {
     points += 5
+    clickSound.play()
   } else if
   ((randomPrompt === gamePrompts[2] || randomPrompt === gamePrompts[3]) && evt.target.id === 'book') {
     points += 5
+    clickSound.play()
   } else if 
   ((randomPrompt === gamePrompts[4] || randomPrompt === gamePrompts[5]) && evt.target.id === 'heart') {
     points += 5
+    clickSound.play()
   } else {
     points -= 5
+    clickSound.play()
   }
   bar.style.width = points + "%";
   mood()
@@ -151,7 +156,7 @@ function render(){
 }
 
 function toggleLightDark() {
-  body.className = body.className === 'light' ? '' : 'light'
+  body.className = body.className === 'dark' ? '' : 'dark'
 }
 
 function checkDarkPref() {
