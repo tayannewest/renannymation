@@ -12,7 +12,7 @@ let lovePower = 0
 let counter = 0
 let gamePrompt
 let randomPrompt
-let gamePrompts = ['Can I please have a snack?', 'Hungry....', 'Will you read to me?', 'Bored...', 'Can I have a hug?', 'Do you wanna be friends?']
+let gamePrompts = ["Can I please have a snack?", "I'm hungry....", "Will you read to me?", "I'm Bored...", "Can I have a hug?", "Do you wanna be friends?"]
 
 /*--------- Cached Element References ---------*/
 
@@ -26,9 +26,10 @@ const food = document.querySelector('#food')
 const book = document.querySelector('#book')
 const heart = document.querySelector('#heart')
 const adamSays = document.querySelector('#random-prompt')
-const currentScore = document.querySelector('#score')
+const currentScore = document.querySelector('#mood')
 const instructions = document.querySelector('#instructions')
-const progressBar = document.querySelector('#points-progress')
+const bar = document.querySelector(".progress-bar");
+
 
 
 /*-------------- Event Listeners --------------*/
@@ -67,7 +68,6 @@ function start() {
   timerEl.removeAttribute('hidden')
   instructions.removeAttribute('hidden')
   currentScore.removeAttribute('hidden')
-  progressBar.style = `width: ${points}`
   render()
   generatePrompts()
 }
@@ -93,6 +93,9 @@ function mood(){
   }
 }
 
+
+
+
 function rightChoice(evt) {
   if ((randomPrompt === gamePrompts[0] || randomPrompt === gamePrompts[1]) && evt.target.id === 'food') {
     points += 5
@@ -105,6 +108,7 @@ function rightChoice(evt) {
   } else {
     points -= 5
   }
+  bar.style.width = points + "%";
   mood()
 }
 
@@ -118,13 +122,13 @@ function render(){
     } else {
       timerEl.textContent = `${min}:${sec}`
     }
-    if ((timeLeft <= 0) && (points >= 100)) {
+    if ((timeLeft <= -1) && (points >= 100)) {
       clearInterval(timerId)
       timerEl.textContent = 'What a great job, looks like Adam will be able to fit in with the villagers thanks to your help!'
       clearInterval(gamePrompt)
       adamSays.innerHTML = 'That was so fun, thanks for playing with me!'
       instructions.hidden = true
-    } else if ((timeLeft <= 0) && (points < 100)) {
+    } else if ((timeLeft <= -1) && (points < 100)) {
       clearInterval(timerId)
       timerEl.textContent = 'Way to go, he ran away. Looks like he might not be the only monster here...'
       clearInterval(gamePrompt)
@@ -132,4 +136,5 @@ function render(){
       instructions.hidden = true
     }
   }, 1000)
+  rightChoice()
 }
