@@ -17,7 +17,7 @@ body {
   background-color: rgb(255, 252, 237);
   color: rgb(32, 0, 36);
   font-family: 'Press Start 2P', Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
-  min-height: 80vh;
+  min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
