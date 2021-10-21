@@ -9,17 +9,17 @@ Adam will prompt you to let you know what he needs. However, he's very indecisiv
 https://renannymation.netlify.app
 
 # Planned Improvements
-Improve mobile layout
-Add more animations to the character during gameplay
-Add multiple difficulty levels with additional timers
+* Improve mobile layout
+* Add more animations to the character during gameplay
+* Add multiple difficulty levels with additional timers
 
 # Built With
-HTML
-CSS
-JavaScript
-Bootstrap
-Animate.css
-Fontawesome.com
+* HTML
+* CSS
+* JavaScript
+* Bootstrap
+* Animate.css
+* Fontawesome.com
 
 # Credits
 Music in the background from https://www.FesliyanStudios.com
