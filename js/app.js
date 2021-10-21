@@ -3,7 +3,7 @@
 /*----------------- Constants -----------------*/
 
 const bgTrack = new Audio('/audio/2019-08-25_-_8bit-Smooth_Presentation_-_David_Fesliyan.mp3')
-const loseTrack = new Audio('/audio/mixkit-vertigo-597.mp3')
+const loseTrack = new Audio('/audio/mixkit-spooky-night-1120.mp3')
 const clickSound = new Audio('/audio/mixkit-player-jumping-in-a-video-game-2043.wav')
 
 /*------------- Variables (state) -------------*/
@@ -91,17 +91,17 @@ function generatePrompts() {
 function userPrompt() {
   randomPrompt = gamePrompts[Math.floor(Math.random() * gamePrompts.length)]
   adamSays.className = 'animate__animated animate__fadeIn'
-  adamSays.innerHTML = randomPrompt
+  adamSays.textContent = randomPrompt
 }
 
 function mood(){
   if (points <=49) {
-    currentScore.innerHTML = 'unhappy...'
+    currentScore.textContent = 'unhappy...'
   } else if ((points >= 50) && (points <= 99)) {
-    currentScore.innerHTML = 'feeling better...'
+    currentScore.textContent = 'feeling better...'
     document.querySelector('#game-img').src = 'images/better.gif'
   } else if (points >= 100) {
-    currentScore.innerHTML = 'Happy!'
+    currentScore.textContent = 'Happy!'
     document.querySelector('#game-img').src = 'images/happy.gif'
   }
 }
@@ -140,7 +140,7 @@ function render(){
       clearInterval(timerId)
       timerEl.textContent = 'What a great job, looks like Adam will be able to fit in with the villagers thanks to your help!'
       clearInterval(gamePrompt)
-      adamSays.innerHTML = 'That was so fun, thanks for playing with me!'
+      adamSays.textContent = 'That was so fun, thanks for playing with me!'
       instructions.hidden = true
       currentScore.hidden = true
       reset.hidden = false
@@ -149,7 +149,7 @@ function render(){
       document.querySelector('#game-img').src = 'images/angry.gif'
       timerEl.textContent = 'Way to go, he ran away. Looks like he might not be the only monster here...'
       clearInterval(gamePrompt)
-      adamSays.innerHTML = 'If I cannot inspire love, I will cause fear!'
+      adamSays.textContent = 'If I cannot inspire love, I will cause fear!'
       instructions.hidden = true
       currentScore.hidden = true
       reset.hidden = false
