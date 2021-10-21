@@ -79,6 +79,7 @@ function init() {
   timerEl.removeAttribute('hidden')
   instructions.removeAttribute('hidden')
   currentScore.removeAttribute('hidden')
+  document.querySelector('#game-img').src = 'images/sad.gif'
   render()
   generatePrompts()
 }
@@ -98,10 +99,10 @@ function mood(){
     currentScore.innerHTML = 'unhappy...'
   } else if ((points >= 50) && (points <= 99)) {
     currentScore.innerHTML = 'feeling better...'
-    document.querySelector('#game-img').src = 'images/better.png'
+    document.querySelector('#game-img').src = 'images/better.gif'
   } else if (points >= 100) {
     currentScore.innerHTML = 'Happy!'
-    document.querySelector('#game-img').src = 'images/happy-adam-gif.gif'
+    document.querySelector('#game-img').src = 'images/happy.gif'
   }
 }
 
@@ -145,6 +146,7 @@ function render(){
       reset.hidden = false
     } else if ((timeLeft <= -1) && (points < 100)) {
       clearInterval(timerId)
+      document.querySelector('#game-img').src = 'images/angry.gif'
       timerEl.textContent = 'Way to go, he ran away. Looks like he might not be the only monster here...'
       clearInterval(gamePrompt)
       adamSays.innerHTML = 'If I cannot inspire love, I will cause fear!'
