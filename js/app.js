@@ -37,7 +37,6 @@ const body = document.querySelector('body')
 const reset = document.querySelector('#reset-btn')
 
 
-
 /*-------------- Event Listeners --------------*/
 
 acceptBtn.addEventListener('click', showImg)
@@ -49,6 +48,7 @@ lightDarkBtn.addEventListener('click', toggleLightDark)
 
 /*----------------- Functions -----------------*/
 
+text.className = 'animate__animated animate__fadeIn'
 
 function showImg () {
   text.hidden = true
@@ -56,6 +56,7 @@ function showImg () {
   bgImg.className = 'animate__animated animate__fadeIn'
   bgImg.removeAttribute('hidden')
   startBtn.removeAttribute('hidden')
+  adamSays.textContent = 'Nice to meet you...'
   showIcons()
   bgTrack.play()
 }

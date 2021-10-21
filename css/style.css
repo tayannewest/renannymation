@@ -17,11 +17,12 @@ body {
   background-color: rgb(255, 252, 237);
   color: rgb(32, 0, 36);
   font-family: 'Press Start 2P', Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
-  min-height: 100vh;
+  min-height: 80vh;
   display: flex;
   justify-content: center;
   align-items: center;
   text-align: center;
+  margin: 50px;
   --btn-text-color: rgb(32, 0, 36);
   --btn-border: 2px solid rgb(32, 0, 36);
 }
