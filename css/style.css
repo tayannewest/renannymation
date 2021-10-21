@@ -19,12 +19,11 @@ body {
   font-family: 'Press Start 2P', Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
   min-height: 100vh;
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
+  text-align: center;
   --btn-text-color: rgb(32, 0, 36);
   --btn-border: 2px solid rgb(32, 0, 36);
-  --light-dark-btn-content: 'Turn the lights off'
 }
 
 body.dark {
@@ -32,11 +31,9 @@ body.dark {
   color: rgb(255, 214, 33);
   --btn-text-color: rgb(255, 214, 33);
   --btn-border: 2px solid rgb(255, 214, 33);
-  --light-dark-btn-content: 'Turn the lights on';
 }
 
 main {
-  text-align: center;
   margin: 40px;
 }
 
@@ -59,8 +56,13 @@ main {
   margin: 10px;
 }
 
-#light-dark-btn::after {
-  content: var(--light-dark-btn-content)
+#light-dark-btn {
+  justify-content: flex-start;
+  align-items: flex-start;
+  height: 40px;
+  font-size: 15px;
+  padding: 6px;
+  margin: 10px;
 }
 
 .img {

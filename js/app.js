@@ -75,8 +75,6 @@ function init() {
   timerEl.removeAttribute('hidden')
   instructions.removeAttribute('hidden')
   currentScore.removeAttribute('hidden')
-  points = 0
-  timeLeft = 60
   render()
   generatePrompts()
 }
@@ -87,6 +85,7 @@ function generatePrompts() {
 
 function userPrompt() {
   randomPrompt = gamePrompts[Math.floor(Math.random() * gamePrompts.length)]
+  adamSays.className = 'animate__animated animate__fadeIn'
   adamSays.innerHTML = randomPrompt
 }
 
