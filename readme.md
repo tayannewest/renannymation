@@ -1,4 +1,4 @@
-# ReNannyMation
+# ⚡️ ReNannyMation ⚡️
 Are you responsible? Are you nurturing? You don't scare easy, do you? I might have a game for you....
 Your goal is to make sure Adam is happy. You've got one full minute to build up his happiness and fill the progress bar. 
 
@@ -35,5 +35,5 @@ https://renannymation.netlify.app
 https://whimsical.com/renannymation-NCMtTXxfa8jzgmiaB13eWR
 
 # Credits
-Music in the background from https://www.FesliyanStudios.com
-Gameplay sound effects from https://mixkit.co/
+* Music in the background from https://www.FesliyanStudios.com
+* Gameplay sound effects from https://mixkit.co/
