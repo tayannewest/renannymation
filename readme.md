@@ -18,6 +18,7 @@ Adam will prompt you to let you know what he needs. However, he's very indecisiv
 |![game play screen](images/gameplay.png "Game play display")|
 
 | Will you keep him happy? | Or make him angry? |
+| :---------: | :---------: |
 |![game play gif](images/happy.gif "Winning sprite") | ![game play gif](images/angry.gif "Losing sprite")
 
 # Give It A Shot!
