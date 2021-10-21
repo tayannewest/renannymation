@@ -9,6 +9,11 @@ ReNannyMation is a hand-drawn, pixel-art-based babysitting simulator game for we
 Adam will prompt you to let you know what he needs. However, he's very indecisive and will ask you for something new every 2 seconds. When he makes a request, click on the corresponding icon to interact with him. If you click the right one in time, his happiness will increase! But if you miss it or click the wrong one, his happiness will decrease. If he's not happy at the end of a minute, who knows what might happen....
 
 # Game Visuals
+
+| Will you keep him happy? | Or make him angry? |
+| :---------: | :---------: |
+|![game play gif](images/happy.gif "Winning sprite") | ![game play gif](images/angry.gif "Losing sprite")
+
 |Light Mode | Dark Mode |
 | :---------: | :---------: |
 |![light mode](images/light-mode.png "Light mode")|![dark mode](images/dark-mode.png "Dark mode")
@@ -17,9 +22,6 @@ Adam will prompt you to let you know what he needs. However, he's very indecisiv
 | :---------: |
 |![game play screen](images/gameplay.png "Game play display")|
 
-| Will you keep him happy? | Or make him angry? |
-| :---------: | :---------: |
-|![game play gif](images/happy.gif "Winning sprite") | ![game play gif](images/angry.gif "Losing sprite")
 
 # Give It A Shot!
 https://renannymation.netlify.app

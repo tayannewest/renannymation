@@ -3,6 +3,7 @@
 /*----------------- Constants -----------------*/
 
 const bgTrack = new Audio('/audio/2019-08-25_-_8bit-Smooth_Presentation_-_David_Fesliyan.mp3')
+const winTrack = new Audio ('/audio/30sec-2021-08-16_-_8_Bit_Adventure_-_www.FesliyanStudios.com.mp3')
 const loseTrack = new Audio('/audio/mixkit-spooky-night-1120.mp3')
 const clickSound = new Audio('/audio/mixkit-player-jumping-in-a-video-game-2043.wav')
 
@@ -144,6 +145,9 @@ function render(){
       instructions.hidden = true
       currentScore.hidden = true
       reset.hidden = false
+      bgTrack.pause()
+      winTrack.play()
+      winTrack.volume = 0.55
     } else if ((timeLeft <= -1) && (points < 100)) {
       clearInterval(timerId)
       document.querySelector('#game-img').src = 'images/angry.gif'
@@ -155,6 +159,7 @@ function render(){
       reset.hidden = false
       bgTrack.pause()
       loseTrack.play()
+      loseTrack.volume = 0.55
     }
   }, 1000)
   rightChoice()
