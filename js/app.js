@@ -3,6 +3,7 @@
 /*----------------- Constants -----------------*/
 
 const bgTrack = new Audio('/audio/2019-08-25_-_8bit-Smooth_Presentation_-_David_Fesliyan.mp3')
+const loseTrack = new Audio('/audio/mixkit-vertigo-597.mp3')
 const clickSound = new Audio('/audio/mixkit-player-jumping-in-a-video-game-2043.wav')
 
 /*------------- Variables (state) -------------*/
@@ -45,6 +46,7 @@ food.addEventListener('click', rightChoice)
 book.addEventListener('click', rightChoice)
 heart.addEventListener('click', rightChoice)
 lightDarkBtn.addEventListener('click', toggleLightDark)
+reset.addEventListener('click', resetGame)
 
 /*----------------- Functions -----------------*/
 
@@ -59,6 +61,7 @@ function showImg () {
   adamSays.textContent = 'Nice to meet you...'
   showIcons()
   bgTrack.play()
+  bgTrack.volume = 0.55
 }
 
 function showIcons() {
@@ -140,7 +143,6 @@ function render(){
       instructions.hidden = true
       currentScore.hidden = true
       reset.hidden = false
-      bgTrack.pause()
     } else if ((timeLeft <= -1) && (points < 100)) {
       clearInterval(timerId)
       timerEl.textContent = 'Way to go, he ran away. Looks like he might not be the only monster here...'
@@ -150,9 +152,14 @@ function render(){
       currentScore.hidden = true
       reset.hidden = false
       bgTrack.pause()
+      loseTrack.play()
     }
   }, 1000)
   rightChoice()
+}
+
+function resetGame() {
+  location.reload()
 }
 
 function toggleLightDark() {

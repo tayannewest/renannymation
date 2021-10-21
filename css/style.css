@@ -22,7 +22,7 @@ body {
   justify-content: center;
   align-items: center;
   text-align: center;
-  margin: 50px;
+  margin: 0px 50px;
   --btn-text-color: rgb(32, 0, 36);
   --btn-border: 2px solid rgb(32, 0, 36);
 }
