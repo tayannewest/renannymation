@@ -10,8 +10,9 @@ Adam will prompt you to let you know what he needs. However, he's very indecisiv
 | :---------: | :---------: |
 |![light mode](images/light-mode.png "Light mode")|![dark mode](images/dark-mode.png "Dark mode")
 
-:Game Play Preview:
-![game play screen](images/gameplay.png "Game play display")
+|Game Play Preview|
+| :---------: |
+|![game play screen](images/gameplay.png "Game play display")|
 
 # Give it a shot!
 https://renannymation.netlify.app
