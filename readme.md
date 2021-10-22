@@ -36,6 +36,7 @@ https://renannymation.netlify.app
 * CSS
 * JavaScript
 * Bootstrap
+* Google Fonts
 * Animate.css
 * Fontawesome.com
 * Whimsical.com
