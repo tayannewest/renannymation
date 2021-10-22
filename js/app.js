@@ -51,8 +51,10 @@ reset.addEventListener('click', resetGame)
 
 /*----------------- Functions -----------------*/
 
+// intro text animation on game launch
 text.className = 'animate__animated animate__fadeIn'
 
+// show start screen and play background music
 function showImg () {
   text.hidden = true
   acceptBtn.hidden = true
@@ -65,12 +67,14 @@ function showImg () {
   bgTrack.volume = 0.55
 }
 
+// display gameplay icons
 function showIcons() {
   food.removeAttribute('hidden')
   book.removeAttribute('hidden')
   heart.removeAttribute('hidden')
 }
 
+// start gameplay
 function init() {
   if (startBtn.style.display === 'none') {
     startBtn.style.display = 'flex'
@@ -85,16 +89,19 @@ function init() {
   generatePrompts()
 }
 
+// change prompt every 2 seconds
 function generatePrompts() {
   gamePrompt = setInterval(userPrompt, 2000)
 }
 
+// randomize prompts
 function userPrompt() {
   randomPrompt = gamePrompts[Math.floor(Math.random() * gamePrompts.length)]
   adamSays.className = 'animate__animated animate__fadeIn'
   adamSays.textContent = randomPrompt
 }
 
+// display current mood as it relates to score
 function mood(){
   if (points <=49) {
     currentScore.textContent = 'unhappy...'
@@ -107,6 +114,7 @@ function mood(){
   }
 }
 
+// keep score
 function rightChoice(evt) {
   if ((randomPrompt === gamePrompts[0] || randomPrompt === gamePrompts[1]) && evt.target.id === 'food') {
     points += 5
@@ -127,6 +135,7 @@ function rightChoice(evt) {
   mood()
 }
 
+// begin timer and set win/lose conditions
 function render(){
   let timerId = setInterval(() => {
     min = Math.floor(timeLeft/60)
@@ -165,14 +174,17 @@ function render(){
   rightChoice()
 }
 
+// refresh page
 function resetGame() {
   location.reload()
 }
 
+// light-dark mode
 function toggleLightDark() {
   body.className = body.className === 'dark' ? '' : 'dark'
 }
 
+// check for automated user preference on light-dark mode
 function checkDarkPref() {
   if (window.matchMedia('(prefers-color-scheme:dark)').matches && body.className !== 'dark') {
     toggleLightDark()
